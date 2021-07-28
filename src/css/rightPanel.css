@@ -5,9 +5,8 @@
 }
 .user-account-details-cards {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   margin-top: 30px;
-  justify-content: space-evenly;
 }
 
 .dashboard .dashboard-header strong {
@@ -23,7 +22,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 10px;
+  margin: 15px;
   margin-bottom: 30px;
 }
 .user-account-details-cards .card.income h5 {
@@ -38,6 +37,22 @@
 .user-account-details-cards .card.transaction h5 {
   color: rgb(47, 188, 235);
 }
+
+.total-expenses {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px #ccc;
+  margin-bottom: 20px;
+}
+
+.expenses-details {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-top: 20px;
+}
+
 @media (max-width: 767px) {
   .user-account-details-cards {
     flex-direction: column;

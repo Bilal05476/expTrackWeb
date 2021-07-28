@@ -4,6 +4,7 @@
 // import { TransactionList } from "./components/TransactionList";
 // import { AddTransaction } from "./components/AddTransaction";
 // import { GlobalProvider } from "./Context/GlobalState";
+import "@devexpress/dx-react-chart-bootstrap4/dist/dx-react-chart-bootstrap4.css";
 import { BrowserRouter as Router } from "react-router-dom";
 
 import LeftPanel from "./components/LeftPanel";
