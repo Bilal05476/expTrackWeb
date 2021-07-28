@@ -4,6 +4,7 @@
 // import { TransactionList } from "./components/TransactionList";
 // import { AddTransaction } from "./components/AddTransaction";
 // import { GlobalProvider } from "./Context/GlobalState";
+import { BrowserRouter as Router } from "react-router-dom";
 
 import LeftPanel from "./components/LeftPanel";
 import RightPanel from "./components/RightPanel";
@@ -20,8 +21,10 @@ function App() {
     //   </div>
     // </GlobalProvider>
     <div className="project-view">
-      <LeftPanel />
-      <RightPanel />
+      <Router>
+        <LeftPanel />
+        <RightPanel />
+      </Router>
     </div>
   );
 }

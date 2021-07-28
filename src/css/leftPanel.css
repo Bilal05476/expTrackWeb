@@ -3,6 +3,7 @@
   background: #fff;
   box-shadow: 1px 0px 10px #333;
   border-right: 1px solid rgba(51, 51, 51, 0.274);
+  height: 100vh;
 }
 
 .expense-tracker-heading {
@@ -48,4 +49,27 @@
   width: 20px;
   height: 20px;
   margin-right: 5px;
+}
+.links-for-differ-pages {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+.links-for-differ-pages a {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px 20px;
+  color: #000;
+  border-radius: 20px;
+  transition: 0.5s;
+  text-decoration: none;
+}
+.links-for-differ-pages a:hover {
+  background: linear-gradient(to left, #4b6cb7, #1a3975);
+  color: #fff;
 }

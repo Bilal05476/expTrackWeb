@@ -3,3 +3,36 @@
   padding: 20px;
   flex: 0.9;
 }
+.user-account-details-cards {
+  display: flex;
+  align-items: center;
+  margin-top: 30px;
+  justify-content: space-evenly;
+}
+
+.dashboard .dashboard-header strong {
+  color: rgba(87, 86, 86, 0.774);
+}
+
+.user-account-details-cards .card {
+  background: #fff;
+  padding: 20px 60px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px #ccc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.user-account-details-cards .card.income h5 {
+  color: blue;
+}
+.user-account-details-cards .card.expense h5 {
+  color: crimson;
+}
+.user-account-details-cards .card.balance h5 {
+  color: green;
+}
+.user-account-details-cards .card.transaction h5 {
+  color: rgb(47, 188, 235);
+}
