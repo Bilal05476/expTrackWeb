@@ -18,14 +18,14 @@ const LeftPanel = () => {
           <p className="m-0">$ 5,240</p>
         </div>
         <div className="links-for-differ-pages mt-4">
-          <NavLink to="/">
-            <a>Dashboard</a>
+          <NavLink className="pageLink" to="/">
+            <p>Dashboard</p>
           </NavLink>
-          <NavLink to="/transactions">
-            <a>Transactions</a>
+          <NavLink className="pageLink" to="/transactions">
+            <p>Transactions</p>
           </NavLink>
-          <NavLink to="/about">
-            <a>About</a>
+          <NavLink className="pageLink" to="/about">
+            <p>About</p>
           </NavLink>
         </div>
       </div>

@@ -6,7 +6,7 @@ const Dashboard = () => {
       <div className="dashboard-header">
         <strong>Dashboard</strong>
       </div>
-      <div className="user-account-details-cards">
+      <div className="row user-account-details-cards">
         <AccountCardData
           amount="44,330"
           amountName="Income"
