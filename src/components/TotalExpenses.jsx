@@ -1,4 +1,5 @@
 import React from "react";
+import ExpenseChart from "./ExpenseChart";
 
 const TotalExpenses = () => {
   return (
@@ -8,7 +9,9 @@ const TotalExpenses = () => {
         <small>Jun 1 - Dec 1</small>
       </div>
       <div className="expenses-details">
-        <div className="expenses-chart">Chart</div>
+        <div className="expenses-chart">
+          <ExpenseChart />{" "}
+        </div>
         <div className="transactions-history">History</div>
       </div>
     </div>
