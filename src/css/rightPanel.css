@@ -47,12 +47,19 @@
 }
 
 .expenses-details {
-  display: flex;
   align-items: center;
-  justify-content: space-evenly;
   margin-top: 20px;
 }
-
+.transactions-history .history-child {
+  display: flex;
+  margin-left: 50px;
+}
+.transactions-history .transaction-point {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: crimson;
+}
 @media (max-width: 767px) {
   .user-account-details-cards {
     flex-direction: column;

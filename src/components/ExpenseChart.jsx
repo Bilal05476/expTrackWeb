@@ -19,14 +19,14 @@ const data = [
 
 export default function ExpenseChart() {
   const [chartData, setChartData] = useState(data);
-  const [targetItem, setTargetItem] = useState("");
+  // const [targetItem, setTargetItem] = useState("");
   //   const onChange = (targetItem) => {
   //     setTargetItem({ targetItem });
   //   };
   return (
     <Chart data={chartData}>
       <PieSeries valueField="val" argumentField="expense" innerRadius={0.6} />
-      <Title text="Your Expense Chart" />
+      <Title text="" />
       <Animation />
       <EventTracker />
       <Tooltip />

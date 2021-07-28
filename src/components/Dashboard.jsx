@@ -31,9 +31,6 @@ const Dashboard = () => {
           />
         </div>
         <TotalExpenses />
-        <TotalExpenses />
-        <TotalExpenses />
-        <TotalExpenses />
       </div>
     </div>
   );
