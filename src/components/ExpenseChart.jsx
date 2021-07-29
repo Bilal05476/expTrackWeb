@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   Chart,
   PieSeries,
@@ -18,8 +17,7 @@ const data = [
 ];
 
 export default function ExpenseChart() {
-  const [chartData, setChartData] = useState(data);
-  const [targetItem, setTargetItem] = useState(undefined);
+  const chartData = data;
 
   return (
     <Chart data={chartData}>
