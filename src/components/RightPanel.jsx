@@ -3,12 +3,14 @@ import About from "./About";
 import Dashboard from "./Dashboard";
 import Transactions from "./Transactions";
 import { Switch, Route } from "react-router-dom";
-import { useState } from "react";
 
-const RightPanel = ({ userIncome, userExpense, userBalance }) => {
+const RightPanel = ({
+  userIncome,
+  userExpense,
+  userBalance,
+  userTransaction,
+}) => {
   // const [balance, setBalance] = useState(0);
-  const [transactions, setTransactions] = useState("0.00");
-
   return (
     <div className="right-panel">
       <Switch>
@@ -16,8 +18,8 @@ const RightPanel = ({ userIncome, userExpense, userBalance }) => {
           <Dashboard
             income={userIncome}
             expense={userExpense}
-            transactions={transactions}
             balance={userBalance}
+            userTransaction={userTransaction}
           />
         </Route>
         <Route exact path="/transactions">
@@ -25,8 +27,6 @@ const RightPanel = ({ userIncome, userExpense, userBalance }) => {
             income={userIncome}
             expense={userExpense}
             balance={userBalance}
-            transactions={transactions}
-            setTransactions={setTransactions}
           />
         </Route>
         <Route exact path="/about" component={About} />

@@ -1,7 +1,7 @@
 import AccountCardData from "./AccountCardData";
 import TotalExpenses from "./TotalExpenses";
 
-const Dashboard = ({ income, expense, balance, transactions }) => {
+const Dashboard = ({ income, expense, balance, userTransaction }) => {
   return (
     <div className="dashboard">
       <div className="dashboard-header">
@@ -25,7 +25,7 @@ const Dashboard = ({ income, expense, balance, transactions }) => {
             amountClass="balance"
           />
           <AccountCardData
-            amount={transactions}
+            amount={userTransaction}
             amountName="Transactions"
             amountClass="transaction"
           />
