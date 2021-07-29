@@ -20,7 +20,14 @@ const LeftPanel = () => {
         </div>
         <div className="links-for-differ-pages mt-4">
           <NavLink className="pageLink" to="/">
-            <p>Dashboard</p>
+            <p
+              style={{
+                background: "linear-gradient(to left, #4360a1, #224997)",
+                color: "#fff",
+              }}
+            >
+              Dashboard
+            </p>
           </NavLink>
           <NavLink className="pageLink" to="/transactions">
             <p>Transactions</p>
