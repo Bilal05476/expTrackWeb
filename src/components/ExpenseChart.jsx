@@ -1,11 +1,6 @@
-import {
-  Chart,
-  PieSeries,
-  Title,
-  Tooltip,
-} from "@devexpress/dx-react-chart-bootstrap4";
+import { Chart, Title, Tooltip } from "@devexpress/dx-react-chart-bootstrap4";
 import "@devexpress/dx-react-chart-bootstrap4/dist/dx-react-chart-bootstrap4.css";
-import { Animation, EventTracker } from "@devexpress/dx-react-chart";
+import { Animation, EventTracker, PieSeries } from "@devexpress/dx-react-chart";
 
 const data = [
   { expense: "food", val: 41 },
@@ -21,7 +16,7 @@ export default function ExpenseChart() {
 
   return (
     <Chart data={chartData}>
-      <PieSeries valueField="val" argumentField="expense" innerRadius={0.6} />
+      <PieSeries valueField="val" argumentField="expense" innerRadius={0.5} />
       <Title text="Expense Chart" />
       <Animation />
       <EventTracker />

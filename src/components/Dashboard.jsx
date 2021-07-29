@@ -10,22 +10,22 @@ const Dashboard = () => {
       <div className="user-account-details-cards">
         <div className="card-deck">
           <AccountCardData
-            amount="44,330"
+            amount="1000"
             amountName="Income"
             amountClass="income"
           />
           <AccountCardData
-            amount="44,330"
+            amount="342"
             amountName="Expense"
             amountClass="expense"
           />
           <AccountCardData
-            amount="44,330"
+            amount="658"
             amountName="Balance"
             amountClass="balance"
           />
           <AccountCardData
-            amount="44,330"
+            amount="1342"
             amountName="Transactions"
             amountClass="transaction"
           />

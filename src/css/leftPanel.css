@@ -23,6 +23,7 @@
 .expense-tracker-heading h4 {
   font-size: 1.2rem;
   color: rgb(3, 44, 82);
+  margin-bottom: 0px !important;
 }
 .user-account-details {
   display: flex;
@@ -35,7 +36,7 @@
 .user-account-details img {
   width: 100px;
   height: 100px;
-  margin-right: 5px;
+  border-radius: 50%;
 }
 .user-account-details .wallet-amount {
   background: #ccc;
@@ -44,11 +45,6 @@
   border: 1px solid #333;
   display: flex;
   align-items: center;
-}
-.user-account-details .wallet-amount img {
-  width: 20px;
-  height: 20px;
-  margin-right: 5px;
 }
 .links-for-differ-pages {
   display: flex;
@@ -67,13 +63,13 @@
 .links-for-differ-pages p {
   margin-top: 10px;
   margin-bottom: 10px;
-  padding: 10px 20px;
+  padding: 10px 40px;
   color: #000;
   border-radius: 20px;
   transition: 0.5s;
 }
 .links-for-differ-pages p:hover {
-  background: linear-gradient(to left, #4b6cb7, #1a3975);
+  background: linear-gradient(to left, #4360a1, #224997);
   color: #fff;
 }
 @media (max-width: 767px) {

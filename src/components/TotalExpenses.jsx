@@ -10,7 +10,7 @@ const TotalExpenses = () => {
           <h5>Total Expenses</h5>
           <small>Jun 1 - Dec 1</small>
         </div>
-        <div className="sorting-div"></div>
+        <div className="sorting-div">21/6/2021 - 21/7/2021 📅</div>
       </div>
       <div className="expenses-details row">
         <div className="expenses-chart col-md-6">

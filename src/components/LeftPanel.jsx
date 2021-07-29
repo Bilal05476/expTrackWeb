@@ -1,6 +1,6 @@
 import "../css/leftPanel.css";
 import logo from "../img/trackerlogo.png";
-import wallet from "../img/wallet-icon.png";
+import profile from "../img/profile.jpg";
 import { NavLink } from "react-router-dom";
 
 const LeftPanel = () => {
@@ -11,11 +11,12 @@ const LeftPanel = () => {
         <h4>Expense Tracker</h4>
       </div>
       <div className="user-account-details">
-        <img src={logo} alt="profile" />
-        <h5 className="userName my-2">UserName</h5>
+        <img src={profile} alt="profile" />
+        <h5 className="userName my-2">Bilal Ahmed</h5>
         <div className="wallet-amount my-2">
-          <img src={wallet} alt="wallet" />
-          <p className="m-0">$ 5,240</p>
+          💳
+          <div className="mx-1"></div>
+          <p className="m-0">$ 658</p>
         </div>
         <div className="links-for-differ-pages mt-4">
           <NavLink className="pageLink" to="/">

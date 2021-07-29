@@ -2,7 +2,7 @@ const AccountCardData = ({ amount, amountName, amountClass }) => {
   return (
     <div className={`card ${amountClass}`}>
       <h5>${amount}</h5>
-      <small>{amountName}</small>
+      <small className="text-secondary">{amountName}</small>
     </div>
   );
 };
