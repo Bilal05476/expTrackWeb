@@ -3,12 +3,8 @@ import "@devexpress/dx-react-chart-bootstrap4/dist/dx-react-chart-bootstrap4.css
 import { Animation, EventTracker, PieSeries } from "@devexpress/dx-react-chart";
 
 const data = [
-  { expense: "food", val: 41 },
   { expense: "picnic", val: 101 },
-  { expense: "friends", val: 34 },
-  { expense: "family", val: 59 },
   { expense: "studies", val: 72 },
-  { expense: "activities", val: 35 },
 ];
 
 export default function ExpenseChart() {

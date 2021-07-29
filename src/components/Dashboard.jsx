@@ -1,7 +1,7 @@
 import AccountCardData from "./AccountCardData";
 import TotalExpenses from "./TotalExpenses";
 
-const Dashboard = () => {
+const Dashboard = ({ income, expense, balance, transactions }) => {
   return (
     <div className="dashboard">
       <div className="dashboard-header">
@@ -10,22 +10,22 @@ const Dashboard = () => {
       <div className="user-account-details-cards">
         <div className="card-deck">
           <AccountCardData
-            amount="1000"
+            amount={income}
             amountName="Income"
             amountClass="income"
           />
           <AccountCardData
-            amount="342"
+            amount={expense}
             amountName="Expense"
             amountClass="expense"
           />
           <AccountCardData
-            amount="658"
+            amount={balance}
             amountName="Balance"
             amountClass="balance"
           />
           <AccountCardData
-            amount="1342"
+            amount={transactions}
             amountName="Transactions"
             amountClass="transaction"
           />

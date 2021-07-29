@@ -37,26 +37,6 @@ const TotalExpenses = () => {
               transactionName="Studies"
               transactionAmount="72"
             />
-            <TransactionsTable
-              colorClass="bg-warning"
-              transactionName="Family"
-              transactionAmount="59"
-            />
-            <TransactionsTable
-              colorClass="bg-primary"
-              transactionName="Food"
-              transactionAmount="41"
-            />
-            <TransactionsTable
-              colorClass="bg-secondary"
-              transactionName="Activities"
-              transactionAmount="35"
-            />
-            <TransactionsTable
-              colorClass="bg-success"
-              transactionName="Friends"
-              transactionAmount="34"
-            />
           </table>
         </div>
       </div>

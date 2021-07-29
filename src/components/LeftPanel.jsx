@@ -3,7 +3,7 @@ import logo from "../img/trackerlogo.png";
 import profile from "../img/profile.jpg";
 import { NavLink } from "react-router-dom";
 
-const LeftPanel = () => {
+const LeftPanel = ({ userBalance }) => {
   return (
     <div className="left-panel">
       <div className="expense-tracker-heading">
@@ -16,7 +16,7 @@ const LeftPanel = () => {
         <div className="wallet-amount my-2">
           💳
           <div className="mx-1"></div>
-          <p className="m-0">$ 658</p>
+          <p className="m-0">$ {userBalance}</p>
         </div>
         <div className="links-for-differ-pages mt-4">
           <NavLink className="pageLink" to="/">

@@ -1,23 +1,41 @@
-import AccountCardData from "./AccountCardData";
+import { useState } from "react";
 
 const Transactions = () => {
+  const [addIncome, setAddIncome] = useState(0);
+  const [addExpense, setAddExpense] = useState(0);
+
+  const handleIncome = (e) => {
+    e.preventDefault();
+  };
+  const handleExpense = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <div className="dashboard">
       <div className="dashboard-header">
         <strong>Transactions</strong>
       </div>
-      <div className="user-account-details-cards">
-        <AccountCardData
-          amount="44,330"
-          amountName="Income"
-          amountClass="income"
+      <form onSubmit={handleIncome}>
+        <h5>Add Transaction</h5>
+        {/* <input type="text" /> */}
+        <input
+          value={addIncome}
+          onChange={(e) => setAddIncome(e.target.value)}
+          type="number"
         />
-        <AccountCardData
-          amount="44,330"
-          amountName="Expense"
-          amountClass="expense"
+        <button type="submit">Add Income</button>
+      </form>
+      <form onSubmit={handleExpense}>
+        <h5>Add Transaction</h5>
+        {/* <input type="text" /> */}
+        <input
+          value={addExpense}
+          onChange={(e) => setAddExpense(e.target.value)}
+          type="number"
         />
-      </div>
+        <button type="submit">Add Expense</button>
+      </form>
     </div>
   );
 };
