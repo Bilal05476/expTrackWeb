@@ -33,7 +33,6 @@ const TotalExpenses = () => {
                 </th>
               </tr>
               {userTransactions.map((transaction) => (
-                // <Transaction key={transaction.id} transaction={transaction} />
                 <TransactionsTable
                   key={transaction.id}
                   colorClass={
