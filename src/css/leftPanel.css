@@ -66,9 +66,17 @@
   padding: 10px 40px;
   color: #000;
   border-radius: 20px;
-  transition: 0.5s;
+  transition: 0.5s ease;
 }
 .links-for-differ-pages p:hover {
+  background: linear-gradient(to left, #4360a1, #224997);
+  color: #fff;
+}
+.links-for-differ-pages .is-active p {
+  background: linear-gradient(to left, #4360a1, #224997);
+  color: #fff;
+}
+.links-for-differ-pages p:active {
   background: linear-gradient(to left, #4360a1, #224997);
   color: #fff;
 }

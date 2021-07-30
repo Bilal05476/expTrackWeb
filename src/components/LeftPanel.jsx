@@ -19,20 +19,22 @@ const LeftPanel = ({ userBalance }) => {
           <p className="m-0">$ {userBalance}</p>
         </div>
         <div className="links-for-differ-pages mt-4">
-          <NavLink className="pageLink" to="/">
-            <p
-              style={{
-                background: "linear-gradient(to left, #4360a1, #224997)",
-                color: "#fff",
-              }}
-            >
-              Dashboard
-            </p>
+          <NavLink
+            exact
+            activeClassName="is-active"
+            className="pageLink"
+            to="/"
+          >
+            <p>Dashboard</p>
           </NavLink>
-          <NavLink className="pageLink" to="/transactions">
+          <NavLink
+            activeClassName="is-active"
+            className="pageLink"
+            to="/transactions"
+          >
             <p>Transactions</p>
           </NavLink>
-          <NavLink className="pageLink" to="/about">
+          <NavLink activeClassName="is-active" className="pageLink" to="/about">
             <p>About</p>
           </NavLink>
         </div>

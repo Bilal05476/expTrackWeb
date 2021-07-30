@@ -7,18 +7,33 @@ import { GlobalContext } from "../Context/GlobalState";
 export default function ExpenseChart() {
   const { userTransactions } = useContext(GlobalContext);
   const transState = userTransactions.map((transaction) => transaction);
-  const colorState = transState.map((item) => item.exp);
-  console.log(colorState);
+
+  const userIncome = transState
+    .filter((item) => item.inc === true)
+    .reduce((acc, item) => (acc += item.amount), 0)
+    .toFixed(2);
+
+  const userExpense = (
+    transState
+      .filter((item) => item.exp === true)
+      .reduce((acc, item) => (acc += item.amount), 0) * 1
+  ).toFixed(2);
+
+  const userBalance = (
+    parseFloat(userIncome) - parseFloat(userExpense)
+  ).toFixed(2);
+
+  const data = [
+    { expense: "balance", amount: userBalance },
+    { expense: "exp", amount: userExpense },
+  ];
+
   return (
-    <Chart
-      // color={colorState.filter((item) => (item === true ? "crimson" : "green"))}
-      data={userTransactions}
-    >
+    <Chart data={data}>
       <PieSeries
         valueField="amount"
         argumentField="expense"
         innerRadius={0.5}
-        color={"exp" === true ? "crimson" : "green"}
       />
       <Title text="Expense Chart" />
       <Animation />

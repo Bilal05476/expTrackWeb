@@ -22,11 +22,13 @@ function App() {
   const userExpense = (
     transState
       .filter((item) => item.exp === true)
-      .reduce((acc, item) => (acc += item.amount), 0) * -1
+      .reduce((acc, item) => (acc += item.amount), 0) * 1
   ).toFixed(2);
 
+  console.log(userExpense);
+
   const userBalance = (
-    parseFloat(userIncome) + parseFloat(userExpense)
+    parseFloat(userIncome) - parseFloat(userExpense)
   ).toFixed(2);
 
   return (

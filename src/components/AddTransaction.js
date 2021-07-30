@@ -4,7 +4,7 @@ import "../css/AddTrans.css";
 
 export const AddTransaction = () => {
   const [expense, setExpense] = useState("");
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState("");
   const [exp, setExp] = useState(false);
   const [inc, setInc] = useState(false);
 
@@ -32,7 +32,7 @@ export const AddTransaction = () => {
     <>
       <form className="form" onSubmit={onSubmit}>
         <div className="amount-name">
-          <label htmlFor="expense">Text</label>
+          <label htmlFor="expense">Transaction Name</label>
           <input
             type="text"
             value={expense}
@@ -41,11 +41,7 @@ export const AddTransaction = () => {
           />
         </div>
         <div className="amount-price">
-          <label htmlFor="amount">
-            {" "}
-            Amount <br />
-            (negative - expense, positive - income){" "}
-          </label>
+          <label htmlFor="amount">Amount</label>
           <input
             type="number"
             value={amount}

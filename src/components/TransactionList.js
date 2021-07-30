@@ -7,11 +7,13 @@ export const TransactionList = () => {
 
   return (
     <>
-      <h3>History</h3>
-      <ul className="list">
+      <ul className="list mb-4">
         {userTransactions.map((transaction) => (
           <Transaction key={transaction.id} transaction={transaction} />
         ))}
+        {userTransactions.length === 0 && (
+          <small className="text-center">No Record Found</small>
+        )}
       </ul>
     </>
   );

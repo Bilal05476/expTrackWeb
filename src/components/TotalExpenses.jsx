@@ -18,7 +18,7 @@ const TotalExpenses = () => {
       </div>
       <div className="expenses-details row">
         <div className="expenses-chart col-md-6">
-          <ExpenseChart />{" "}
+          <ExpenseChart />
         </div>
         <div className="transactions-history col-md-6">
           <h5 className=" my-4">Transactions History</h5>
