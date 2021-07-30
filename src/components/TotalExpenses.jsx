@@ -1,8 +1,9 @@
 import React from "react";
-import ExpenseChart from "./ExpenseChart";
+// import ExpenseChart from "./ExpenseChart";
 import TransactionsTable from "./TransactionsTable";
 import { GlobalContext } from "../Context/GlobalState";
 import { useContext } from "react";
+import ExpDoughChart from "./ExpDoughChart";
 
 const TotalExpenses = () => {
   const { userTransactions } = useContext(GlobalContext);
@@ -18,7 +19,8 @@ const TotalExpenses = () => {
       </div>
       <div className="expenses-details row">
         <div className="expenses-chart col-md-6">
-          <ExpenseChart />
+          {/* <ExpenseChart /> */}
+          <ExpDoughChart />
         </div>
         <div className="transactions-history col-md-6">
           <h5 className=" my-4">Transactions History</h5>
