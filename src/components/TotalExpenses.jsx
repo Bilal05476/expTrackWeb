@@ -37,9 +37,9 @@ const TotalExpenses = () => {
                 <TransactionsTable
                   key={transaction.id}
                   colorClass={
-                    transaction.amount < 0 ? "bg-danger" : "bg-success"
+                    transaction.exp === true ? "bg-danger" : "bg-success"
                   }
-                  transactionName={transaction.text}
+                  transactionName={transaction.expense}
                   transactionAmount={transaction.amount}
                 />
               ))}

@@ -10,7 +10,6 @@ const RightPanel = ({
   userBalance,
   userTransaction,
 }) => {
-  // const [balance, setBalance] = useState(0);
   return (
     <div className="right-panel">
       <Switch>

@@ -3,8 +3,10 @@ import { GlobalContext } from "../Context/GlobalState";
 import "../css/AddTrans.css";
 
 export const AddTransaction = () => {
-  const [text, setText] = useState("");
+  const [expense, setExpense] = useState("");
   const [amount, setAmount] = useState(0);
+  const [exp, setExp] = useState(false);
+  const [inc, setInc] = useState(false);
 
   const { addTransaction } = useContext(GlobalContext);
 
@@ -13,23 +15,28 @@ export const AddTransaction = () => {
 
     const newTransaction = {
       id: Math.floor(Math.random() * 100000000),
-      text,
+      exp,
+      inc,
+      expense,
       amount: +amount,
     };
 
     addTransaction(newTransaction);
-    setText("");
+    setExpense("");
     setAmount(0);
+    setExp(false);
+    setInc(false);
   };
+
   return (
     <>
       <form className="form" onSubmit={onSubmit}>
         <div className="amount-name">
-          <label htmlFor="text">Text</label>
+          <label htmlFor="expense">Text</label>
           <input
             type="text"
-            value={text}
-            onChange={(e) => setText(e.target.value)}
+            value={expense}
+            onChange={(e) => setExpense(e.target.value)}
             placeholder="Enter text..."
           />
         </div>
@@ -45,10 +52,37 @@ export const AddTransaction = () => {
             onChange={(e) => setAmount(e.target.value)}
             placeholder="Enter amount..."
           />
+          <div className="inc-exp">
+            <div className="income-div">
+              <label htmlFor="inc">Income</label>
+              <input
+                type="checkbox"
+                value={inc}
+                checked={inc}
+                onChange={(e) => setInc(e.currentTarget.checked)}
+              />
+            </div>
+            <div className="expense-div">
+              <label htmlFor="exp">Expense</label>
+              <input
+                type="checkbox"
+                value={exp}
+                checked={exp}
+                onChange={(e) => setExp(e.currentTarget.checked)}
+              />
+            </div>
+          </div>
         </div>
-        <button type="submit" className="btn">
-          Add transaction
-        </button>
+
+        {exp || inc ? (
+          <button className="btn" type="submit">
+            Add Transaction
+          </button>
+        ) : (
+          <div className="disable-btn bg-secondary text-center">
+            Add Transaction
+          </div>
+        )}
       </form>
     </>
   );

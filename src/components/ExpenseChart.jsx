@@ -4,18 +4,17 @@ import { Animation, EventTracker, PieSeries } from "@devexpress/dx-react-chart";
 import { useContext } from "react";
 import { GlobalContext } from "../Context/GlobalState";
 
-// const data = [
-//   { expense: "picnic", val: 101 },
-//   { expense: "studies", val: 72 },
-// ];
-
 export default function ExpenseChart() {
   const { userTransactions } = useContext(GlobalContext);
-  const chartData = userTransactions;
 
   return (
-    <Chart data={chartData}>
-      <PieSeries valueField="amount" argumentField="text" innerRadius={0.5} />
+    <Chart data={userTransactions}>
+      <PieSeries
+        valueField="amount"
+        argumentField="expense"
+        innerRadius={0.5}
+        color="green"
+      />
       <Title text="Expense Chart" />
       <Animation />
       <EventTracker />

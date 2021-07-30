@@ -7,22 +7,28 @@ import { GlobalContext } from "./Context/GlobalState";
 
 function App() {
   const { userTransactions } = useContext(GlobalContext);
-  console.log(userTransactions);
+
   const amounts = userTransactions.map((transaction) => transaction.amount);
-  const userBalance = amounts
+  const transState = userTransactions.map((transaction) => transaction);
+  const userTransaction = amounts
     .reduce((acc, item) => (acc += item), 0)
     .toFixed(2);
 
-  const userIncome = amounts
-    .filter((item) => item > 0)
-    .reduce((acc, item) => (acc += item), 0)
+  const userIncome = transState
+    .filter((item) => item.inc === true)
+    .reduce((acc, item) => (acc += item.amount), 0)
     .toFixed(2);
-  console.log(userIncome);
+
   const userExpense = (
-    amounts.filter((item) => item < 0).reduce((acc, item) => (acc += item), 0) *
-    -1
+    transState
+      .filter((item) => item.exp === true)
+      .reduce((acc, item) => (acc += item.amount), 0) * -1
   ).toFixed(2);
-  const userTransaction = parseFloat(userIncome) + parseFloat(userExpense);
+
+  const userBalance = (
+    parseFloat(userIncome) + parseFloat(userExpense)
+  ).toFixed(2);
+
   return (
     <div className="project-view">
       <Router>

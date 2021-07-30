@@ -39,10 +39,35 @@ input[type="number"] {
   padding: 10px;
   width: 100%;
 }
+.disable-btn {
+  box-shadow: var(--box-shadow);
+  color: #fff;
+  border: 0;
+  display: block;
+  font-size: 16px;
+  margin: 10px 0 30px;
+  padding: 10px;
+  width: 100%;
+  border-radius: 5px;
+}
 .btn:hover {
   color: #fff;
   background-color: #7263bb;
 }
 .btn:focus {
   outline: 0;
+}
+.inc-exp {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.inc-exp .income-div,
+.inc-exp .expense-div {
+  display: flex;
+  align-items: center;
+}
+.inc-exp .income-div label,
+.inc-exp .expense-div label {
+  margin-right: 10px;
 }
