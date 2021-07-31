@@ -11,11 +11,13 @@ const TotalExpenses = () => {
   return (
     <div className="col-12 total-expenses">
       <div className="expenses-header">
-        <div>
-          <h5>Total Expenses</h5>
-          <small>Jun 1 - Dec 1</small>
+        <div className="heading">
+          <h5>TOTAL EXPENSES</h5>
+          <small>Jun 21 - Jul 21</small>
         </div>
-        <div className="sorting-div">21/6/2021 - 21/7/2021 📅</div>
+        <div className="sorting-div">
+          21/6/2021 - 21/7/2021 <i className="ml-2 fa fa-calendar-week"></i>
+        </div>
       </div>
       <div className="expenses-details row">
         <div className="expenses-chart col-12 col-md-6">

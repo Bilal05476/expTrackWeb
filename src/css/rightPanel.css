@@ -74,6 +74,7 @@
   border: 1px solid #ccc;
   border-radius: 10px;
   box-shadow: 1px 1px 5px #ccc;
+  font-size: 0.8rem;
 }
 .expenses-details {
   align-items: center;
@@ -170,5 +171,14 @@
   }
   .right-panel {
     flex: 1;
+  }
+  .total-expenses .expenses-header {
+    justify-content: center !important;
+  }
+  .total-expenses .expenses-header .sorting-div {
+    margin-top: 10px;
+  }
+  .total-expenses .expenses-header .heading {
+    text-align: center;
   }
 }

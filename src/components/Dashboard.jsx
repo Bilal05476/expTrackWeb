@@ -18,17 +18,17 @@ const Dashboard = ({ income, expense, balance, userTransaction }) => {
         <NavLink
           activeClassName="is-active"
           className="breadCrumbLink mx-2"
-          to="/about"
+          to="/account"
         >
-          About
+          Account
         </NavLink>
         /
         <NavLink
           activeClassName="is-active"
           className="breadCrumbLink mx-2"
-          to="/account"
+          to="/about"
         >
-          Account
+          About
         </NavLink>
       </div>
       <div className="user-account-details-cards">

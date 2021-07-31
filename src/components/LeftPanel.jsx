@@ -14,8 +14,7 @@ const LeftPanel = ({ userBalance }) => {
         <img src={profile} alt="profile" />
         <h5 className="userName my-2">Bilal Ahmed</h5>
         <div className="wallet-amount my-2">
-          💳
-          <div className="mx-1"></div>
+          <i className="fa fa-credit-card mr-2"></i>
           <p className="m-0">$ {userBalance}</p>
         </div>
         <div className="links-for-differ-pages mt-4">
@@ -34,15 +33,15 @@ const LeftPanel = ({ userBalance }) => {
           >
             <p>Transactions</p>
           </NavLink>
-          <NavLink activeClassName="is-active" className="pageLink" to="/about">
-            <p>About</p>
-          </NavLink>
           <NavLink
             activeClassName="is-active"
             className="pageLink"
             to="/account"
           >
             <p>Account</p>
+          </NavLink>
+          <NavLink activeClassName="is-active" className="pageLink" to="/about">
+            <p>About</p>
           </NavLink>
         </div>
       </div>
