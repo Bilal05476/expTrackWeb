@@ -4,6 +4,7 @@ import { useContext } from "react";
 
 const ExpDoughChart = () => {
   const { userTransactions } = useContext(GlobalContext);
+  const amounts = userTransactions.map((transaction) => transaction.amount);
   const transState = userTransactions.map((transaction) => transaction);
 
   const userIncome = transState
@@ -20,19 +21,29 @@ const ExpDoughChart = () => {
   const userBalance = (
     parseFloat(userIncome) - parseFloat(userExpense)
   ).toFixed(2);
+
+  const userTransaction = amounts
+    .reduce((acc, item) => (acc += item), 0)
+    .toFixed(2);
+
   const data = {
-    labels: ["Balance", "Expense"],
+    labels: ["Income", "Expense", "Balance", "Transactions"],
     datasets: [
       {
         label: "Expense Chart",
-        data: [userBalance, userExpense],
-        borderColor: ["rgba(25, 255, 6,0.2)", "rgba(255, 20, 8,0.2)"],
-        backgroundColor: ["green", "crimson"],
+        data: [userIncome, userExpense, userBalance, userTransaction],
+        borderColor: [
+          "rgba(25, 25, 255,0.2)",
+          "rgba(255, 20, 8,0.2)",
+          "rgba(25, 255, 6,0.2)",
+          "rgba(5, 20, 255,0.2)",
+        ],
+        backgroundColor: ["blue", "crimson", "green", "rgb(47, 188, 235)"],
       },
     ],
   };
 
-  return <Doughnut data={data} />;
+  return <Doughnut style={{ width: "97%" }} data={data} />;
 };
 
 export default ExpDoughChart;

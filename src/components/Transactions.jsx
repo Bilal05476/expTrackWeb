@@ -1,6 +1,7 @@
 import { AddTransaction } from "./AddTransaction";
 import { TransactionList } from "./TransactionList";
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 const Transactions = () => {
   const [addTrans, setAddTrans] = useState(false);
@@ -9,17 +10,52 @@ const Transactions = () => {
   return (
     <div className="dashboard">
       <div className="dashboard-header">
-        <strong>Transactions</strong>
+        <NavLink
+          activeClassName="is-active"
+          className="breadCrumbLink mx-2"
+          to="/"
+        >
+          Dashboard
+        </NavLink>
+        /<strong className="mx-2">Transactions</strong>
       </div>
-      <div className="btn mt-4" onClick={() => setHistoryTrans(!historyTrans)}>
-        {historyTrans ? "Hide Transactions" : "Show Transactions"}
+      <div className="row transactions-page-view">
+        <div className="col-md-6">
+          <div
+            className="btn mt-4"
+            onClick={() => setHistoryTrans(!historyTrans)}
+          >
+            {historyTrans ? (
+              <div className="transaction-toggle-btn">
+                <small>Hide Transactions</small>
+                <i className="mx-2 fa fa-caret-up"></i>
+              </div>
+            ) : (
+              <div className="transaction-toggle-btn">
+                <small>Show Transactions</small>
+                <i className="mx-2 fa fa-caret-down"></i>
+              </div>
+            )}
+          </div>
+          {historyTrans && <TransactionList />}
+        </div>
+        <div className="col-md-6">
+          <div className="btn mt-4" onClick={() => setAddTrans(!addTrans)}>
+            {addTrans ? (
+              <div className="transaction-toggle-btn">
+                <small>Close</small>
+                <i className="mx-2 fa fa-caret-up"></i>
+              </div>
+            ) : (
+              <div className="transaction-toggle-btn">
+                <small>Add Transaction</small>
+                <i className="mx-2 fa fa-caret-down"></i>
+              </div>
+            )}
+          </div>
+          {addTrans && <AddTransaction />}
+        </div>
       </div>
-      {historyTrans && <TransactionList />}
-      <div className="btn" onClick={() => setAddTrans(!addTrans)}>
-        {addTrans ? "Close" : "Add Transaction"}
-      </div>
-
-      {addTrans && <AddTransaction />}
     </div>
   );
 };

@@ -18,8 +18,7 @@ const TotalExpenses = () => {
         <div className="sorting-div">21/6/2021 - 21/7/2021 📅</div>
       </div>
       <div className="expenses-details row">
-        <div className="expenses-chart col-md-6">
-          {/* <ExpenseChart /> */}
+        <div className="expenses-chart col-12 col-md-6">
           <ExpDoughChart />
         </div>
         <div className="transactions-history col-md-6">

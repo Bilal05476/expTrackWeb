@@ -1,11 +1,19 @@
 import AccountCardData from "./AccountCardData";
 import TotalExpenses from "./TotalExpenses";
+import { NavLink } from "react-router-dom";
 
 const Dashboard = ({ income, expense, balance, userTransaction }) => {
   return (
     <div className="dashboard">
       <div className="dashboard-header">
-        <strong>Dashboard</strong>
+        <strong className="mx-2">Dashboard</strong> /
+        <NavLink
+          activeClassName="is-active"
+          className="breadCrumbLink mx-2"
+          to="/transactions"
+        >
+          Transactions
+        </NavLink>
       </div>
       <div className="user-account-details-cards">
         <div className="card-deck">
