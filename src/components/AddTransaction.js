@@ -70,7 +70,7 @@ export const AddTransaction = () => {
           </div>
         </div>
 
-        {exp || inc ? (
+        {(inc || exp) && (!inc || !exp) ? (
           <button className="btn" type="submit">
             Add Transaction
           </button>
