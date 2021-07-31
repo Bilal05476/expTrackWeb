@@ -7,9 +7,17 @@
 .user-account-details-cards {
   display: flex;
   flex-direction: column;
-  margin-top: 30px;
+  margin-top: 10px;
 }
 
+.dashboard .dashboard-header {
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
 .dashboard .dashboard-header strong {
   color: rgba(87, 86, 86, 0.774);
 }
@@ -29,7 +37,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 15px;
+  margin-top: 15px;
   margin-bottom: 30px;
 }
 .user-account-details-cards .card.income h5 {

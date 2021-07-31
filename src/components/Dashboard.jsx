@@ -14,6 +14,22 @@ const Dashboard = ({ income, expense, balance, userTransaction }) => {
         >
           Transactions
         </NavLink>
+        /
+        <NavLink
+          activeClassName="is-active"
+          className="breadCrumbLink mx-2"
+          to="/about"
+        >
+          About
+        </NavLink>
+        /
+        <NavLink
+          activeClassName="is-active"
+          className="breadCrumbLink mx-2"
+          to="/account"
+        >
+          Account
+        </NavLink>
       </div>
       <div className="user-account-details-cards">
         <div className="card-deck">

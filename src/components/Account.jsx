@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 
-const About = () => {
+const Account = () => {
   return (
     <div className="dashboard">
       <div className="dashboard-header">
@@ -11,10 +11,10 @@ const About = () => {
         >
           Dashboard
         </NavLink>
-        /<strong className="mx-2">About</strong>
+        /<strong className="mx-2">Account</strong>
       </div>
     </div>
   );
 };
 
-export default About;
+export default Account;

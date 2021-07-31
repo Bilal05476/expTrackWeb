@@ -1,5 +1,6 @@
 import "../css/rightPanel.css";
 import About from "./About";
+import Account from "./Account";
 import Dashboard from "./Dashboard";
 import Transactions from "./Transactions";
 import { Switch, Route } from "react-router-dom";
@@ -29,6 +30,7 @@ const RightPanel = ({
           />
         </Route>
         <Route exact path="/about" component={About} />
+        <Route exact path="/account" component={Account} />
       </Switch>
     </div>
   );

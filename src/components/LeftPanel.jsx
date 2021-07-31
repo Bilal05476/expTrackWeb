@@ -37,6 +37,13 @@ const LeftPanel = ({ userBalance }) => {
           <NavLink activeClassName="is-active" className="pageLink" to="/about">
             <p>About</p>
           </NavLink>
+          <NavLink
+            activeClassName="is-active"
+            className="pageLink"
+            to="/account"
+          >
+            <p>Account</p>
+          </NavLink>
         </div>
       </div>
     </div>
