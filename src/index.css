@@ -1,9 +1,12 @@
 @import url("https://fonts.googleapis.com/css?family=Lato&display=swap");
-@import url(https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
+/* @import url(https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic); */
 
 :root {
-  --AppTransition--: 0.3s;
   --box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  --darkMainColor--: rgb(19, 180, 255);
+  --AppBorderRadius--: 10px;
+  --AppDarkBorder--: rgb(128, 128, 128);
+  --AppTransition--: 0.3s;
 }
 
 * {
@@ -18,4 +21,46 @@ body {
 }
 .project-view {
   display: flex;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 0.4rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #005ba5 0%, #0045a0 100%);
+}
+
+/*toggleBtn*/
+
+.lightTheme,
+.darkTheme {
+  width: 40px;
+  height: 40px;
+  /* background: #fff; */
+  cursor: pointer;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.lightTheme::before {
+  content: "\f185";
+  font-family: fontAwesome;
+  font-size: 24px;
+}
+.darkTheme::after {
+  font-size: 24px;
+  content: "\f186";
+  font-family: fontAwesome;
+}
+.collapsableIcon {
+  display: none !important;
 }
