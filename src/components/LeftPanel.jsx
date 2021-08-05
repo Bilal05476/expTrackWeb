@@ -1,9 +1,8 @@
 import "../css/leftPanel.css";
 import logo from "../img/trackerlogo.png";
-import profile from "../img/profile.jpg";
 import { NavLink } from "react-router-dom";
 
-const LeftPanel = ({ userBalance }) => {
+const LeftPanel = ({ userBalance, userName, userImage }) => {
   return (
     <div className="left-panel">
       <div className="expense-tracker-heading">
@@ -11,8 +10,8 @@ const LeftPanel = ({ userBalance }) => {
         <h4>Expense Tracker</h4>
       </div>
       <div className="user-account-details">
-        <img src={profile} alt="profile" />
-        <h5 className="userName my-2">Bilal Ahmed</h5>
+        <img src={userImage} alt="profile" />
+        <h5 className="userName my-2">{userName}</h5>
         <div className="wallet-amount my-2">
           <i className="fa fa-credit-card mr-2"></i>
           <p className="m-0">$ {userBalance}</p>

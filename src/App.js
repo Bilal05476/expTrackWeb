@@ -5,10 +5,24 @@ import { useContext } from "react";
 import { GlobalContext } from "./Context/GlobalState";
 import { useStateValue } from "./StateProvider";
 import AuthComponent from "./components/AuthComponent";
+import { useState } from "react";
+import { db } from "./firebase";
 
 function App() {
   const { userTransactions } = useContext(GlobalContext);
   const [{ user }] = useStateValue();
+  const [userName, setUserName] = useState("");
+  const [userId, setUserId] = useState("");
+  const [userImage, setUserImage] = useState(null);
+
+  if (user) {
+    const getUserData = db.collection("users").doc(user.uid);
+    getUserData.get().then((doc) => {
+      setUserName(doc.data().name);
+      setUserImage(doc.data().avatar);
+      setUserId(user.uid);
+    });
+  }
 
   const amounts = userTransactions.map((transaction) => transaction.amount);
   const transState = userTransactions.map((transaction) => transaction);
@@ -27,8 +41,6 @@ function App() {
       .reduce((acc, item) => (acc += item.amount), 0) * 1
   ).toFixed(2);
 
-  console.log(userExpense);
-
   const userBalance = (
     parseFloat(userIncome) - parseFloat(userExpense)
   ).toFixed(2);
@@ -39,7 +51,11 @@ function App() {
         <AuthComponent />
       ) : (
         <div className="project-view">
-          <LeftPanel userBalance={userBalance} />
+          <LeftPanel
+            userBalance={userBalance}
+            userName={userName}
+            userImage={userImage}
+          />
           <RightPanel
             userIncome={userIncome}
             userExpense={userExpense}

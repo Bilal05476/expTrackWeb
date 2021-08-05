@@ -8,9 +8,9 @@ const JoinNow = ({ isFlipped, setIsFlipped }) => {
   const [joinEmail, setJoinEmail] = useState("");
   const [joinPass, setJoinPass] = useState("");
   const [joinName, setJoinName] = useState("");
-  const [joinCountry, setJoinCountry] = useState("");
-  const [joinCity, setJoinCity] = useState("");
-  const [joinOccupation, setJoinOccupation] = useState("");
+  // const [joinCountry, setJoinCountry] = useState("");
+  // const [joinCity, setJoinCity] = useState("");
+  // const [joinOccupation, setJoinOccupation] = useState("");
   const [joinImage, setJoinImage] = useState(null);
   const [joinError, setJoinError] = useState("");
   const [{ user, toggleTheme }, dispatch] = useStateValue();
@@ -45,9 +45,6 @@ const JoinNow = ({ isFlipped, setIsFlipped }) => {
         return db.collection("users").doc(result.user.uid).set({
           email: joinEmail,
           name: joinName,
-          country: joinCountry,
-          city: joinCity,
-          occupation: joinOccupation,
           avatar: joinImage,
         });
       })
@@ -56,16 +53,10 @@ const JoinNow = ({ isFlipped, setIsFlipped }) => {
         setJoinEmail(joinEmail);
         setJoinName(joinName);
         setJoinPass(joinPass);
-        setJoinCountry(joinCountry);
-        setJoinCity(joinCity);
-        setJoinOccupation(joinOccupation);
       });
     setJoinEmail("");
     setJoinPass("");
     setJoinName("");
-    setJoinCountry("");
-    setJoinCity("");
-    setJoinOccupation("");
     setJoinImage(null);
     console.log(user);
   };
@@ -157,28 +148,13 @@ const JoinNow = ({ isFlipped, setIsFlipped }) => {
                   color: toggleTheme ? "#424242" : "#ccc",
                 }}
               />
-              <label className="m-0 mt-1" htmlFor="fullName">
-                Full Name
-              </label>
-              <input
-                value={joinName}
-                onChange={(e) => setJoinName(e.target.value)}
-                type="text"
-                name="fullName"
-                required
-                style={{
-                  border: toggleTheme ? "1px solid #ccc" : "1px solid #585858",
-                  background: toggleTheme ? "#fff" : "#585858",
-                  color: toggleTheme ? "#424242" : "#ccc",
-                }}
-              />{" "}
             </>
           ) : (
             ""
           )}
           {toggleForm ? (
             <>
-              <div className="d-flex">
+              {/* <div className="d-flex">
                 <div className="country">
                   <label className="m-0 mt-1" htmlFor="country">
                     Country
@@ -217,8 +193,8 @@ const JoinNow = ({ isFlipped, setIsFlipped }) => {
                     }}
                   />
                 </div>
-              </div>
-              <label className="m-0 mt-1" htmlFor="occupation">
+              </div> */}
+              {/* <label className="m-0 mt-1" htmlFor="occupation">
                 Occupation
               </label>
               <input
@@ -232,7 +208,22 @@ const JoinNow = ({ isFlipped, setIsFlipped }) => {
                   background: toggleTheme ? "#fff" : "#585858",
                   color: toggleTheme ? "#424242" : "#ccc",
                 }}
-              />
+              /> */}
+              <label className="m-0 mt-1" htmlFor="fullName">
+                Full Name
+              </label>
+              <input
+                value={joinName}
+                onChange={(e) => setJoinName(e.target.value)}
+                type="text"
+                name="fullName"
+                required
+                style={{
+                  border: toggleTheme ? "1px solid #ccc" : "1px solid #585858",
+                  background: toggleTheme ? "#fff" : "#585858",
+                  color: toggleTheme ? "#424242" : "#ccc",
+                }}
+              />{" "}
               <label className="m-0 mt-1" htmlFor="profile">
                 Profile
               </label>
@@ -259,7 +250,7 @@ const JoinNow = ({ isFlipped, setIsFlipped }) => {
             <span className="policy">Cookie Policy.</span>
           </small>
 
-          {!joinCity || !joinCountry || !joinOccupation || !joinImage ? (
+          {!joinImage || !joinName ? (
             <>
               {toggleForm && (
                 <p
@@ -282,7 +273,7 @@ const JoinNow = ({ isFlipped, setIsFlipped }) => {
             </>
           )}
         </form>
-        {!joinEmail || !joinName || !joinPass ? (
+        {!joinEmail || !joinPass ? (
           <>
             {!toggleForm && (
               <p

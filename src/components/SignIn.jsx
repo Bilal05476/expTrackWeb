@@ -1,7 +1,7 @@
 import "../css/AuthComponent.css";
 import { useState } from "react";
-// import { NavLink } from "react-router-dom";
-import { auth } from "../firebase";
+import Google from "../img/google.png";
+import { auth, provider, db } from "../firebase";
 import { useStateValue } from "../StateProvider";
 
 const SignIn = ({ isFlipped, setIsFlipped }) => {
@@ -34,8 +34,24 @@ const SignIn = ({ isFlipped, setIsFlipped }) => {
     setSignEmail("");
     setSignPass("");
     setSignError("");
-    console.log(user);
   };
+
+  const googleSignIn = (e) => {
+    e.preventDefault();
+    auth
+      .signInWithPopup(provider)
+      .then((result) => {
+        dispatch({
+          type: "SET_USER",
+          user: result.user,
+        });
+        localStorage.setItem("user", JSON.stringify(result.user));
+      })
+      .catch((error) => {
+        setSignError(error.message);
+      });
+  };
+
   const handleClick = (e) => {
     e.preventDefault();
     setIsFlipped(!isFlipped);
@@ -110,7 +126,17 @@ const SignIn = ({ isFlipped, setIsFlipped }) => {
             Sign in
           </button>
         )}
+        <div className="partition">
+          <div className="line"></div>
+          <small>or</small>
+          <div className="line"></div>
+        </div>
+        <button onClick={googleSignIn} className="googleBtn">
+          <img src={Google} width="8%" className="mr-2" alt="google" />
+          Sign in With Google
+        </button>
       </form>
+
       <p className="m-0 my-5 text-center">
         New to LinkedIn?{" "}
         <span onClick={handleClick} className="signInLink">
