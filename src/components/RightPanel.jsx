@@ -10,6 +10,9 @@ const RightPanel = ({
   userExpense,
   userBalance,
   userTransaction,
+  userName,
+  userEmail,
+  userImage,
 }) => {
   return (
     <div className="right-panel">
@@ -30,7 +33,13 @@ const RightPanel = ({
           />
         </Route>
         <Route exact path="/about" component={About} />
-        <Route exact path="/account" component={Account} />
+        <Route exact path="/account">
+          <Account
+            userName={userName}
+            userEmail={userEmail}
+            userImage={userImage}
+          />
+        </Route>
       </Switch>
     </div>
   );

@@ -14,12 +14,14 @@ function App() {
   const [userName, setUserName] = useState("");
   const [userId, setUserId] = useState("");
   const [userImage, setUserImage] = useState(null);
+  const [userEmail, setUserEmail] = useState("");
 
   if (user) {
     const getUserData = db.collection("users").doc(user.uid);
     getUserData.get().then((doc) => {
       setUserName(doc.data().name);
       setUserImage(doc.data().avatar);
+      setUserEmail(doc.data().email);
       setUserId(user.uid);
     });
   }
@@ -61,6 +63,9 @@ function App() {
             userExpense={userExpense}
             userBalance={userBalance}
             userTransaction={userTransaction}
+            userEmail={userEmail}
+            userName={userName}
+            userImage={userImage}
           />
         </div>
       )}
