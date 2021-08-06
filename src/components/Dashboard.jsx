@@ -54,7 +54,12 @@ const Dashboard = ({ income, expense, balance, userTransaction }) => {
             amountClass="transaction"
           />
         </div>
-        <TotalExpenses />
+        <TotalExpenses
+          userIncome={income}
+          userExpense={expense}
+          userBalance={balance}
+          userTransaction={userTransaction}
+        />
       </div>
     </div>
   );

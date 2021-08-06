@@ -4,25 +4,32 @@ import { useState } from "react";
 import { auth, provider, db, storage } from "../firebase";
 import { useStateValue } from "../StateProvider";
 import logo from "../img/trackerlogo.png";
+import ExSpinner from "./ExSpinner";
 
 const JoinNow = ({ isFlipped, setIsFlipped }) => {
+  //user details
   const [joinEmail, setJoinEmail] = useState("");
   const [joinPass, setJoinPass] = useState("");
   const [joinName, setJoinName] = useState("");
-  // const [joinCountry, setJoinCountry] = useState("");
-  // const [joinCity, setJoinCity] = useState("");
-  // const [joinOccupation, setJoinOccupation] = useState("");
   const [joinImage, setJoinImage] = useState(null);
+  //transactions details
+  const [income, setIncome] = useState(0);
+  const [expense, setExpense] = useState(0);
+  //utilities
   const [joinError, setJoinError] = useState("");
-  const [{ user, toggleTheme }, dispatch] = useStateValue();
   const [toggleForm, setToggleForm] = useState(false);
+  const [loading, setLoading] = useState(false);
+  // reducer
+  const [{ user, toggleTheme }, dispatch] = useStateValue();
 
   const onFileChange = async (e) => {
+    setLoading(true);
     const file = e.target.files[0];
     const storageRef = storage.ref();
     const fileRef = await storageRef.child(file.name);
     await fileRef.put(file);
     setJoinImage(await fileRef.getDownloadURL());
+    setLoading(false);
   };
 
   const onToggleTheme = () => {
@@ -47,6 +54,8 @@ const JoinNow = ({ isFlipped, setIsFlipped }) => {
           email: joinEmail,
           name: joinName,
           avatar: joinImage,
+          income,
+          expense,
         });
       })
       .catch((error) => {
@@ -59,7 +68,6 @@ const JoinNow = ({ isFlipped, setIsFlipped }) => {
     setJoinPass("");
     setJoinName("");
     setJoinImage(null);
-    console.log(user);
   };
 
   const googleSignIn = (e) => {
@@ -153,61 +161,6 @@ const JoinNow = ({ isFlipped, setIsFlipped }) => {
           )}
           {toggleForm ? (
             <>
-              {/* <div className="d-flex">
-                <div className="country">
-                  <label className="m-0 mt-1" htmlFor="country">
-                    Country
-                  </label>
-                  <input
-                    value={joinCountry}
-                    onChange={(e) => setJoinCountry(e.target.value)}
-                    type="text"
-                    name="country"
-                    required
-                    style={{
-                      border: toggleTheme
-                        ? "1px solid #ccc"
-                        : "1px solid #585858",
-                      background: toggleTheme ? "#fff" : "#585858",
-                      color: toggleTheme ? "#424242" : "#ccc",
-                    }}
-                  />
-                </div>
-                <div className="city">
-                  <label className="m-0 mt-1" htmlFor="city">
-                    City
-                  </label>
-                  <input
-                    value={joinCity}
-                    onChange={(e) => setJoinCity(e.target.value)}
-                    type="text"
-                    name="city"
-                    required
-                    style={{
-                      border: toggleTheme
-                        ? "1px solid #ccc"
-                        : "1px solid #585858",
-                      background: toggleTheme ? "#fff" : "#585858",
-                      color: toggleTheme ? "#424242" : "#ccc",
-                    }}
-                  />
-                </div>
-              </div> */}
-              {/* <label className="m-0 mt-1" htmlFor="occupation">
-                Occupation
-              </label>
-              <input
-                value={joinOccupation}
-                onChange={(e) => setJoinOccupation(e.target.value)}
-                type="text"
-                name="occupation"
-                required
-                style={{
-                  border: toggleTheme ? "1px solid #ccc" : "1px solid #585858",
-                  background: toggleTheme ? "#fff" : "#585858",
-                  color: toggleTheme ? "#424242" : "#ccc",
-                }}
-              /> */}
               <label className="m-0 mt-1" htmlFor="fullName">
                 Full Name
               </label>
@@ -247,6 +200,7 @@ const JoinNow = ({ isFlipped, setIsFlipped }) => {
             By clicking Agree & Join, you agree to the Expense Tracker
             <span className="policy"> User Agreement, Privacy Policy</span>, and{" "}
             <span className="policy">Cookie Policy.</span>
+            <ExSpinner loading={loading} />
           </small>
 
           {!joinImage || !joinName ? (
@@ -265,7 +219,7 @@ const JoinNow = ({ isFlipped, setIsFlipped }) => {
           ) : (
             <>
               {toggleForm && (
-                <button type="submit" className=" joinNowButton">
+                <button type="submit" className="joinNowButton">
                   Agree & Join
                 </button>
               )}

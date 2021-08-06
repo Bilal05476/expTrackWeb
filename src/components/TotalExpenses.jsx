@@ -5,7 +5,12 @@ import { GlobalContext } from "../Context/GlobalState";
 import { useContext } from "react";
 import ExpDoughChart from "./ExpDoughChart";
 
-const TotalExpenses = () => {
+const TotalExpenses = ({
+  userTransaction,
+  userIncome,
+  userExpense,
+  userBalance,
+}) => {
   const { userTransactions } = useContext(GlobalContext);
 
   return (
@@ -21,7 +26,12 @@ const TotalExpenses = () => {
       </div>
       <div className="expenses-details row">
         <div className="expenses-chart col-12 col-md-6">
-          <ExpDoughChart />
+          <ExpDoughChart
+            userIncome={userIncome}
+            userExpense={userExpense}
+            userBalance={userBalance}
+            userTransaction={userTransaction}
+          />
         </div>
         <div className="transactions-history col-md-6">
           <h5 className=" my-4">Transactions History</h5>

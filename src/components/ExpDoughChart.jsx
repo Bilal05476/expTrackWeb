@@ -2,29 +2,34 @@ import { Doughnut } from "react-chartjs-2";
 import { GlobalContext } from "../Context/GlobalState";
 import { useContext } from "react";
 
-const ExpDoughChart = () => {
+const ExpDoughChart = ({
+  userTransaction,
+  userIncome,
+  userExpense,
+  userBalance,
+}) => {
   const { userTransactions } = useContext(GlobalContext);
   const amounts = userTransactions.map((transaction) => transaction.amount);
   const transState = userTransactions.map((transaction) => transaction);
 
-  const userIncome = transState
-    .filter((item) => item.inc === true)
-    .reduce((acc, item) => (acc += item.amount), 0)
-    .toFixed(2);
+  // const userIncome = transState
+  //   .filter((item) => item.inc === true)
+  //   .reduce((acc, item) => (acc += item.amount), 0)
+  //   .toFixed(2);
 
-  const userExpense = (
-    transState
-      .filter((item) => item.exp === true)
-      .reduce((acc, item) => (acc += item.amount), 0) * 1
-  ).toFixed(2);
+  // const userExpense = (
+  //   transState
+  //     .filter((item) => item.exp === true)
+  //     .reduce((acc, item) => (acc += item.amount), 0) * 1
+  // ).toFixed(2);
 
-  const userBalance = (
-    parseFloat(userIncome) - parseFloat(userExpense)
-  ).toFixed(2);
+  // const userBalance = (
+  //   parseFloat(userIncome) - parseFloat(userExpense)
+  // ).toFixed(2);
 
-  const userTransaction = amounts
-    .reduce((acc, item) => (acc += item), 0)
-    .toFixed(2);
+  // const userTransaction = amounts
+  //   .reduce((acc, item) => (acc += item), 0)
+  //   .toFixed(2);
 
   const data = {
     labels: ["Income", "Expense", "Balance", "Transactions"],

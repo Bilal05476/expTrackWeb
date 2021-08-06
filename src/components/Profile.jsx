@@ -33,6 +33,7 @@ const Profile = ({ userName, userEmail, userImage }) => {
         </div>
         <div className="left__profile col-md-3">
           <img className="profileImage" src={userImage} alt="user" />
+          <h6 className="aboutName d-flex align-items-center">Account Info</h6>
         </div>
 
         <div className="right__profile col-md-9">
