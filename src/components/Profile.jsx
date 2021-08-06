@@ -4,7 +4,7 @@ import { useStateValue } from "../StateProvider";
 import { auth } from "../firebase";
 
 const Profile = ({ userName, userEmail, userImage }) => {
-  const [{ toggleTheme }, dispatch] = useStateValue();
+  const [{}, dispatch] = useStateValue();
   const history = useHistory();
 
   const signOut = (e) => {

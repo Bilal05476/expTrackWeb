@@ -153,3 +153,21 @@
   display: flex;
   justify-content: space-between;
 }
+.expense-tracker-sign-heading {
+  padding: 15px;
+  padding-left: 0;
+  padding-right: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.expense-tracker-sign-heading img {
+  width: 80px;
+  height: 80px;
+  margin-right: 10px;
+}
+.expense-tracker-sign-heading h4 {
+  font-size: 1.9em;
+  margin-bottom: 0px !important;
+}

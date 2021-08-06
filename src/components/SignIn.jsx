@@ -1,14 +1,14 @@
 import "../css/AuthComponent.css";
 import { useState } from "react";
-import Google from "../img/google.png";
-import { auth, provider, db } from "../firebase";
+import { auth } from "../firebase";
 import { useStateValue } from "../StateProvider";
+import logo from "../img/trackerlogo.png";
 
 const SignIn = ({ isFlipped, setIsFlipped }) => {
   const [signEmail, setSignEmail] = useState("");
   const [signPass, setSignPass] = useState("");
   const [signError, setSignError] = useState("");
-  const [{ user, toggleTheme }, dispatch] = useStateValue();
+  const [{ toggleTheme }, dispatch] = useStateValue();
 
   const onToggleTheme = () => {
     dispatch({
@@ -36,34 +36,16 @@ const SignIn = ({ isFlipped, setIsFlipped }) => {
     setSignError("");
   };
 
-  const googleSignIn = (e) => {
-    e.preventDefault();
-    auth
-      .signInWithPopup(provider)
-      .then((result) => {
-        dispatch({
-          type: "SET_USER",
-          user: result.user,
-        });
-        localStorage.setItem("user", JSON.stringify(result.user));
-      })
-      .catch((error) => {
-        setSignError(error.message);
-      });
-  };
-
   const handleClick = (e) => {
     e.preventDefault();
     setIsFlipped(!isFlipped);
   };
   return (
     <div className="signIn" style={{ color: toggleTheme ? "#424242" : "#fff" }}>
-      <img
-        src="https://logos-download.com/wp-content/uploads/2016/03/LinkedIn_Logo_2019.png"
-        width="10%"
-        alt="logo"
-        className="mb-3 mt-3"
-      />
+      <div className="expense-tracker-sign-heading my-1">
+        <img src={logo} alt="logo" />
+        <h4>Expense Tracker</h4>
+      </div>
       <div
         className={`${
           toggleTheme ? "darkTheme mb-2" : "lightTheme mb-2"
@@ -84,7 +66,7 @@ const SignIn = ({ isFlipped, setIsFlipped }) => {
           Sign in
         </h3>
         <small className="mt-1 mb-3">
-          Stay updated on your professional world
+          Stay updated with your financial track
         </small>
         <input
           value={signEmail}
@@ -111,7 +93,7 @@ const SignIn = ({ isFlipped, setIsFlipped }) => {
         />
         {signError && <div className="my-1 signError">{signError}</div>}
 
-        <span className="signInLink my-3 mb-4">Forgot Password?</span>
+        <span className="signInLink my-1 mb-4">{/* Forgot Password? */}</span>
         {!signEmail || !signPass ? (
           <p
             className="disabledBtn"
@@ -126,19 +108,10 @@ const SignIn = ({ isFlipped, setIsFlipped }) => {
             Sign in
           </button>
         )}
-        <div className="partition">
-          <div className="line"></div>
-          <small>or</small>
-          <div className="line"></div>
-        </div>
-        <button onClick={googleSignIn} className="googleBtn">
-          <img src={Google} width="8%" className="mr-2" alt="google" />
-          Sign in With Google
-        </button>
       </form>
 
       <p className="m-0 my-5 text-center">
-        New to LinkedIn?{" "}
+        New here ?{" "}
         <span onClick={handleClick} className="signInLink">
           Join Now
         </span>

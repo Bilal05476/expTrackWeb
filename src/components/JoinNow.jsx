@@ -3,6 +3,7 @@ import Google from "../img/google.png";
 import { useState } from "react";
 import { auth, provider, db, storage } from "../firebase";
 import { useStateValue } from "../StateProvider";
+import logo from "../img/trackerlogo.png";
 
 const JoinNow = ({ isFlipped, setIsFlipped }) => {
   const [joinEmail, setJoinEmail] = useState("");
@@ -93,14 +94,12 @@ const JoinNow = ({ isFlipped, setIsFlipped }) => {
       className="joinNow"
       style={{ color: toggleTheme ? "#424242" : "#fff" }}
     >
-      <img
-        src="https://logos-download.com/wp-content/uploads/2016/03/LinkedIn_Logo_2019.png"
-        width="10%"
-        alt="logo"
-        className="mb-3"
-      />
+      <div className="expense-tracker-sign-heading my-1">
+        <img src={logo} alt="logo" />
+        <h4>Expense Tracker</h4>
+      </div>
       <h2 style={{ fontWeight: "300", fontSize: "1.8rem" }}>
-        Make the most of your professional life
+        Join now to stay updated with your financial track
       </h2>
       <div
         className={`${toggleTheme ? "darkTheme" : "lightTheme"} toolTip`}
@@ -245,7 +244,7 @@ const JoinNow = ({ isFlipped, setIsFlipped }) => {
           {joinError && <div className="my-2 joinError">{joinError}</div>}
 
           <small className="text-center m-4" style={{ fontSize: ".7rem" }}>
-            By clicking Agree & Join, you agree to the LinkedIn
+            By clicking Agree & Join, you agree to the Expense Tracker
             <span className="policy"> User Agreement, Privacy Policy</span>, and{" "}
             <span className="policy">Cookie Policy.</span>
           </small>
@@ -308,7 +307,7 @@ const JoinNow = ({ isFlipped, setIsFlipped }) => {
           Join With Google
         </button>
         <p className="m-0 text-center">
-          Already on LinkedIn?{" "}
+          Already have an account ?{" "}
           <span onClick={handleClick} className="signInLink">
             Sign in
           </span>
