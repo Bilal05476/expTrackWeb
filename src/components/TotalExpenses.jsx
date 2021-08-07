@@ -1,17 +1,18 @@
 import React from "react";
 // import ExpenseChart from "./ExpenseChart";
 import TransactionsTable from "./TransactionsTable";
-import { GlobalContext } from "../Context/GlobalState";
-import { useContext } from "react";
+// import { GlobalContext } from "../Context/GlobalState";
+// import { useContext } from "react";
 import ExpDoughChart from "./ExpDoughChart";
 
 const TotalExpenses = ({
+  userTransactions,
   userTransaction,
   userIncome,
   userExpense,
   userBalance,
 }) => {
-  const { userTransactions } = useContext(GlobalContext);
+  // const { userTransactions } = useContext(GlobalContext);
 
   return (
     <div className="col-12 total-expenses">
@@ -45,16 +46,16 @@ const TotalExpenses = ({
                   Transaction Amount
                 </th>
               </tr>
-              {userTransactions.map((transaction) => (
+              {userTransactions.map((transaction, ind) => {
+                const { exp, expense, amount } = transaction.data;
+
                 <TransactionsTable
-                  key={transaction.id}
-                  colorClass={
-                    transaction.exp === true ? "bg-danger" : "bg-success"
-                  }
-                  transactionName={transaction.expense}
-                  transactionAmount={transaction.amount}
-                />
-              ))}
+                  key={ind}
+                  colorClass={exp === true ? "bg-danger" : "bg-success"}
+                  transactionName={expense}
+                  transactionAmount={amount}
+                />;
+              })}
             </table>
           )}
           {userTransactions.length === 0 && <small>No Record Found</small>}

@@ -18,19 +18,17 @@ function App() {
   const [userIncome, setUserIncome] = useState(0.0);
   const [userExpense, setUserExpense] = useState(0.0);
 
-  useEffect(() => {
-    if (user) {
-      const getUserData = db.collection("users").doc(user.uid);
-      getUserData.get().then((doc) => {
-        setUserName(doc.data().name);
-        setUserImage(doc.data().avatar);
-        setUserEmail(doc.data().email);
-        setUserIncome(doc.data().income);
-        setUserExpense(doc.data().expense);
-        setUserId(user.uid);
-      });
-    }
-  }, [user]);
+  if (user) {
+    const getUserData = db.collection("users").doc(user.uid);
+    getUserData.get().then((doc) => {
+      setUserName(doc.data().name);
+      setUserImage(doc.data().avatar);
+      setUserEmail(doc.data().email);
+      setUserIncome(doc.data().income);
+      setUserExpense(doc.data().expense);
+      setUserId(user.uid);
+    });
+  }
 
   // const amounts = userTransactions.map((transaction) => transaction.amount);
   // const transState = userTransactions.map((transaction) => transaction);

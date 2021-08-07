@@ -2,7 +2,13 @@ import AccountCardData from "./AccountCardData";
 import TotalExpenses from "./TotalExpenses";
 import { NavLink } from "react-router-dom";
 
-const Dashboard = ({ income, expense, balance, userTransaction }) => {
+const Dashboard = ({
+  income,
+  expense,
+  balance,
+  userTransaction,
+  userTransactions,
+}) => {
   return (
     <div className="dashboard">
       <div className="dashboard-header">
@@ -59,6 +65,7 @@ const Dashboard = ({ income, expense, balance, userTransaction }) => {
           userExpense={expense}
           userBalance={balance}
           userTransaction={userTransaction}
+          userTransactions={userTransactions}
         />
       </div>
     </div>

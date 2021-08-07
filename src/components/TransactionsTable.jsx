@@ -3,6 +3,7 @@ const TransactionsTable = ({
   transactionName,
   transactionAmount,
 }) => {
+  console.log(transactionName);
   return (
     <tr>
       <td
