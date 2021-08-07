@@ -1,17 +1,32 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 // import ExpenseChart from "./ExpenseChart";
 import TransactionsTable from "./TransactionsTable";
 // import { GlobalContext } from "../Context/GlobalState";
 // import { useContext } from "react";
 import ExpDoughChart from "./ExpDoughChart";
+import { db } from "../firebase";
+import { useStateValue } from "../StateProvider";
 
 const TotalExpenses = ({
-  userTransactions,
   userTransaction,
   userIncome,
   userExpense,
   userBalance,
 }) => {
+  const [userTransactions, setUserTransactions] = useState([]);
+  const getTransFromDatabase = db.collection("transactions");
+  const [{ user }] = useStateValue();
+
+  useEffect(() => {
+    getTransFromDatabase.orderBy("amount", "desc").onSnapshot((snapshot) =>
+      setUserTransactions(
+        snapshot.docs.map((doc) => ({
+          id: doc.id,
+          data: doc.data(),
+        }))
+      )
+    );
+  }, [user]);
   // const { userTransactions } = useContext(GlobalContext);
 
   return (
@@ -48,13 +63,14 @@ const TotalExpenses = ({
               </tr>
               {userTransactions.map((transaction, ind) => {
                 const { exp, expense, amount } = transaction.data;
-
-                <TransactionsTable
-                  key={ind}
-                  colorClass={exp === true ? "bg-danger" : "bg-success"}
-                  transactionName={expense}
-                  transactionAmount={amount}
-                />;
+                return (
+                  <TransactionsTable
+                    key={ind}
+                    colorClass={exp === true ? "bg-danger" : "bg-success"}
+                    transactionName={expense}
+                    transactionAmount={amount}
+                  />
+                );
               })}
             </table>
           )}

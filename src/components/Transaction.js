@@ -1,3 +1,5 @@
+// deleting component
+
 import React, { useContext, useState, useEffect } from "react";
 // import { db } from "../firebase";
 import { GlobalContext } from "../Context/GlobalState";
@@ -8,13 +10,6 @@ export const Transaction = ({ trans }) => {
   const sign = trans.data.exp === true ? "-" : "+";
 
   //transactions state
-
-  // const onDeleteTrans = (id) => {
-  //   getTransFromDatabase.doc(id).delete();
-  // };
-
-  //allow user to delete only his transactions
-  // const userIdForDeleteTransaction = user.uid.toString();
 
   console.log("transactions", trans);
 
