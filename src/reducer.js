@@ -1,7 +1,7 @@
 export const initialState = {
   user: JSON.parse(localStorage.getItem("user")) || null,
   toggleTheme: JSON.parse(localStorage.getItem("theme")) || false,
-  // postLike: 0,
+  userDetails: JSON.parse(localStorage.getItem("userDetails")) || null,
 };
 
 const reducer = (state, action) => {
@@ -16,11 +16,11 @@ const reducer = (state, action) => {
         ...state,
         toggleTheme: !state.toggleTheme,
       };
-    // case "LIKE_POST":
-    //   return {
-    //     ...state,
-    //     postLike: state.postLike + 1,
-    //   };
+    case "USER_DETAILS":
+      return {
+        ...state,
+        userDetails: action.userDetails,
+      };
     default:
       return state;
   }

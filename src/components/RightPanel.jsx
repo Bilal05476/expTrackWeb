@@ -13,6 +13,7 @@ const RightPanel = ({
   userName,
   userEmail,
   userImage,
+  userId,
 }) => {
   return (
     <div className="right-panel">
@@ -23,6 +24,7 @@ const RightPanel = ({
             expense={userExpense}
             balance={userBalance}
             userTransaction={userTransaction}
+            userId={userId}
           />
         </Route>
         <Route exact path="/transactions">
@@ -30,6 +32,7 @@ const RightPanel = ({
             income={userIncome}
             expense={userExpense}
             balance={userBalance}
+            userId={userId}
           />
         </Route>
         <Route exact path="/about" component={About} />

@@ -4,7 +4,8 @@ import { useStateValue } from "../StateProvider";
 import { auth } from "../firebase";
 
 const Profile = ({ userName, userEmail, userImage }) => {
-  const [{}, dispatch] = useStateValue();
+  const [{ user }, dispatch] = useStateValue();
+  console.lo(user);
   const history = useHistory();
 
   const signOut = (e) => {

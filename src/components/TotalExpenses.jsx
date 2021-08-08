@@ -1,9 +1,6 @@
-import React, { useState, useEffect } from "react";
-// import ExpenseChart from "./ExpenseChart";
+import React, { useState } from "react";
 import TransactionsTable from "./TransactionsTable";
-// import { GlobalContext } from "../Context/GlobalState";
-// import { useContext } from "react";
-import ExpDoughChart from "./ExpDoughChart";
+// import ExpDoughChart from "./ExpDoughChart";
 import { db } from "../firebase";
 import { useStateValue } from "../StateProvider";
 
@@ -17,7 +14,7 @@ const TotalExpenses = ({
   const getTransFromDatabase = db.collection("transactions");
   const [{ user }] = useStateValue();
 
-  useEffect(() => {
+  if (user) {
     getTransFromDatabase.orderBy("amount", "desc").onSnapshot((snapshot) =>
       setUserTransactions(
         snapshot.docs.map((doc) => ({
@@ -26,8 +23,7 @@ const TotalExpenses = ({
         }))
       )
     );
-  }, [user]);
-  // const { userTransactions } = useContext(GlobalContext);
+  }
 
   return (
     <div className="col-12 total-expenses">
@@ -42,12 +38,12 @@ const TotalExpenses = ({
       </div>
       <div className="expenses-details row">
         <div className="expenses-chart col-12 col-md-6">
-          <ExpDoughChart
+          {/* <ExpDoughChart
             userIncome={userIncome}
             userExpense={userExpense}
             userBalance={userBalance}
             userTransaction={userTransaction}
-          />
+          /> */}
         </div>
         <div className="transactions-history col-md-6">
           <h5 className=" my-4">Transactions History</h5>

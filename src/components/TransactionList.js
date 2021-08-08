@@ -1,17 +1,13 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useState } from "react";
 import { db } from "../firebase";
 import { useStateValue } from "../StateProvider";
 
-// import { GlobalContext } from "../Context/GlobalState";
-// import { Transaction } from "./Transaction";
-
 export const TransactionList = () => {
-  // const { userTransactions } = useContext(GlobalContext);
   const [userTransactions, setUserTransactions] = useState([]);
   const getTransFromDatabase = db.collection("transactions");
   const [{ user }] = useStateValue();
 
-  useEffect(() => {
+  if (user) {
     getTransFromDatabase.orderBy("amount", "desc").onSnapshot((snapshot) =>
       setUserTransactions(
         snapshot.docs.map((doc) => ({
@@ -20,8 +16,8 @@ export const TransactionList = () => {
         }))
       )
     );
-  }, [user]);
-  const deleteTransaction = () => {};
+  }
+
   const onDeleteTrans = (id) => {
     getTransFromDatabase.doc(id).delete();
   };
@@ -46,7 +42,7 @@ export const TransactionList = () => {
                   </span>
 
                   <button
-                    onClick={() => deleteTransaction(trans.id)}
+                    onClick={() => onDeleteTrans(trans.id)}
                     className="delete-btn"
                   >
                     <i className="fa fa-times"></i>
@@ -58,7 +54,7 @@ export const TransactionList = () => {
             </>
           );
         })}
-        {userTransactions.length === 0 && (
+        {!userTransactions && (
           <small className="text-center">No Record Found</small>
         )}
       </ul>

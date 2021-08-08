@@ -1,5 +1,4 @@
 import React, { useState, useContext } from "react";
-import { GlobalContext } from "../Context/GlobalState";
 import "../css/AddTrans.css";
 
 export const AddTransaction = () => {
@@ -7,8 +6,6 @@ export const AddTransaction = () => {
   const [amount, setAmount] = useState("");
   const [exp, setExp] = useState(false);
   const [inc, setInc] = useState(false);
-
-  const { addTransaction } = useContext(GlobalContext);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -21,7 +18,7 @@ export const AddTransaction = () => {
       amount: +amount,
     };
 
-    addTransaction(newTransaction);
+    // addTransaction(newTransaction);
     setExpense("");
     setAmount(0);
     setExp(false);

@@ -20,7 +20,7 @@ const JoinNow = ({ isFlipped, setIsFlipped }) => {
   const [toggleForm, setToggleForm] = useState(false);
   const [loading, setLoading] = useState(false);
   // reducer
-  const [{ user, toggleTheme }, dispatch] = useStateValue();
+  const [{ toggleTheme }, dispatch] = useStateValue();
 
   const onFileChange = async (e) => {
     setLoading(true);
@@ -68,6 +68,8 @@ const JoinNow = ({ isFlipped, setIsFlipped }) => {
     setJoinPass("");
     setJoinName("");
     setJoinImage(null);
+    setIncome(0);
+    setExpense(0);
   };
 
   const googleSignIn = (e) => {
