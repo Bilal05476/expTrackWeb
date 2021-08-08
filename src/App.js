@@ -25,8 +25,8 @@ function App() {
     }
   }, [user, dispatch]);
 
-  const userIncome = userDetails?.income;
-  const userExpense = userDetails?.expense;
+  const userIncome = userDetails?.income.toFixed(2);
+  const userExpense = userDetails?.expense.toFixed(2);
   const userName = userDetails?.name;
   const userEmail = userDetails?.email;
   const userImage = userDetails?.avatar;
@@ -47,8 +47,8 @@ function App() {
         <div className="project-view">
           <LeftPanel userBalance={userBalance} />
           <RightPanel
-            userIncome={userIncome.toFixed(2)}
-            userExpense={userExpense.toFixed(2)}
+            userIncome={userIncome}
+            userExpense={userExpense}
             userBalance={userBalance}
             userTransaction={userTransaction}
             userName={userName}

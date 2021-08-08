@@ -1,6 +1,6 @@
 import "../css/AuthComponent.css";
 import { useState } from "react";
-import { auth } from "../firebase";
+import { auth, db } from "../firebase";
 import { useStateValue } from "../StateProvider";
 import logo from "../img/trackerlogo.png";
 
@@ -8,7 +8,7 @@ const SignIn = ({ isFlipped, setIsFlipped }) => {
   const [signEmail, setSignEmail] = useState("");
   const [signPass, setSignPass] = useState("");
   const [signError, setSignError] = useState("");
-  const [{ toggleTheme }, dispatch] = useStateValue();
+  const [{ user, toggleTheme }, dispatch] = useStateValue();
 
   const onToggleTheme = () => {
     dispatch({
@@ -27,6 +27,14 @@ const SignIn = ({ isFlipped, setIsFlipped }) => {
           user: result.user,
         });
         localStorage.setItem("user", JSON.stringify(result.user));
+        const getUserData = db.collection("users").doc(user.uid);
+        getUserData.get().then((doc) => {
+          dispatch({
+            type: "USER_DETAILS",
+            userDetails: doc.data(),
+          });
+          localStorage.setItem("userDetails", JSON.stringify(doc.data()));
+        });
       })
       .catch((error) => {
         setSignError(error.message);

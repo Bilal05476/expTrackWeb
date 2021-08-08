@@ -11,18 +11,12 @@ const TotalExpenses = ({
   userBalance,
 }) => {
   const [userTransactions, setUserTransactions] = useState([]);
-  const getTransFromDatabase = db.collection("transactions");
-  const [{ user }] = useStateValue();
+  // const getTransFromDatabase = db.collection("transactions");
+  const [{ user, userDetails }] = useStateValue();
 
   if (user) {
-    getTransFromDatabase.orderBy("amount", "desc").onSnapshot((snapshot) =>
-      setUserTransactions(
-        snapshot.docs.map((doc) => ({
-          id: doc.id,
-          data: doc.data(),
-        }))
-      )
-    );
+    setUserTransactions(userDetails.transactions);
+    console.log(userTransactions);
   }
 
   return (
@@ -47,7 +41,7 @@ const TotalExpenses = ({
         </div>
         <div className="transactions-history col-md-6">
           <h5 className=" my-4">Transactions History</h5>
-          {userTransactions.length !== 0 && (
+          {/* {userTransactions.length !== 0 && (
             <table style={{ border: "1px solid #ccc" }}>
               <tr>
                 <th style={{ border: "1px solid #ccc", padding: "2px 10px" }}>
@@ -58,7 +52,8 @@ const TotalExpenses = ({
                 </th>
               </tr>
               {userTransactions.map((transaction, ind) => {
-                const { exp, expense, amount } = transaction.data;
+                const { exp, expense, amount } = transaction;
+
                 return (
                   <TransactionsTable
                     key={ind}
@@ -69,8 +64,8 @@ const TotalExpenses = ({
                 );
               })}
             </table>
-          )}
-          {userTransactions.length === 0 && <small>No Record Found</small>}
+          )} */}
+          {/* {userTransactions.length < 0 && <small>No Record Found</small>} */}
         </div>
       </div>
     </div>

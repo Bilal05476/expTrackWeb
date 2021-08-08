@@ -5,7 +5,7 @@ import { auth } from "../firebase";
 
 const Profile = ({ userName, userEmail, userImage }) => {
   const [{ user }, dispatch] = useStateValue();
-  console.lo(user);
+
   const history = useHistory();
 
   const signOut = (e) => {
@@ -18,6 +18,7 @@ const Profile = ({ userName, userEmail, userImage }) => {
           user: result,
         });
         localStorage.setItem("user", null);
+        localStorage.setItem("userDetails", null);
         history.push("/");
       })
       .catch((error) => {
