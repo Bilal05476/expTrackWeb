@@ -1,4 +1,4 @@
-import "@devexpress/dx-react-chart-bootstrap4/dist/dx-react-chart-bootstrap4.css";
+// import "@devexpress/dx-react-chart-bootstrap4/dist/dx-react-chart-bootstrap4.css";
 import LeftPanel from "./components/LeftPanel";
 import RightPanel from "./components/RightPanel";
 import { useEffect } from "react";
@@ -23,7 +23,7 @@ function App() {
         localStorage.setItem("userDetails", JSON.stringify(doc.data()));
       });
     }
-  }, [user]);
+  }, [user, dispatch]);
 
   const userIncome = userDetails?.income;
   const userExpense = userDetails?.expense;
