@@ -112,18 +112,18 @@
 }
 
 .list li.plus {
-  border-right: 5px solid #2ecc71;
+  border-right: 4px solid #2ecc71;
 }
 
 .list li.minus {
-  border-right: 5px solid crimson;
+  border-right: 4px solid crimson;
 }
 
 .delete-btn {
   cursor: pointer;
-  background-color: #e74c3c;
-  border: 0;
-  color: #fff;
+  border: 1px solid crimson;
+  background: transparent;
+  color: crimson;
   font-size: 20px;
   line-height: 20px;
   padding: 2px 5px;
@@ -133,6 +133,10 @@
   transform: translate(-100%, -50%);
   opacity: 0;
   transition: opacity 0.3s ease;
+}
+.delete-btn:hover {
+  background: crimson;
+  color: #fff;
 }
 
 .list li:hover .delete-btn {

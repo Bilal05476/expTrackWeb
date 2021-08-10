@@ -12,6 +12,8 @@ export const AddTransaction = () => {
   const [{ user }] = useStateValue();
 
   const addTransInDatabase = db.collection("transactions");
+  const updateTransInDatabase = db.collection("users").doc(user.uid);
+  console.log(updateTransInDatabase);
   const onSubmit = (e) => {
     e.preventDefault();
     addTransInDatabase.add({
@@ -22,6 +24,17 @@ export const AddTransaction = () => {
       amount: +amount,
       transTime: firebase.firestore.Timestamp.fromDate(new Date()),
     });
+    if (exp) {
+      const incrementExp = firebase.firestore.FieldValue.increment(+amount);
+      updateTransInDatabase.update({
+        expense: incrementExp,
+      });
+    } else if (inc) {
+      const incrementInc = firebase.firestore.FieldValue.increment(+amount);
+      updateTransInDatabase.update({
+        income: incrementInc,
+      });
+    }
 
     // addTransaction(newTransaction);
     setExpense("");
