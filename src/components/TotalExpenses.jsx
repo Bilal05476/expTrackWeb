@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import TransactionsTable from "./TransactionsTable";
+// import TransactionsTable from "./TransactionsTable";
 // import ExpDoughChart from "./ExpDoughChart";
 import { db } from "../firebase";
-import { useStateValue } from "../StateProvider";
+// import { useStateValue } from "../StateProvider";
 
 const TotalExpenses = ({
   userTransaction,
@@ -11,13 +11,7 @@ const TotalExpenses = ({
   userBalance,
 }) => {
   const [userTransactions, setUserTransactions] = useState([]);
-  // const getTransFromDatabase = db.collection("transactions");
-  const [{ user, userDetails }] = useStateValue();
-
-  if (user) {
-    setUserTransactions(userDetails.transactions);
-    console.log(userTransactions);
-  }
+  const getTransFromDatabase = db.collection("transactions");
 
   return (
     <div className="col-12 total-expenses">
