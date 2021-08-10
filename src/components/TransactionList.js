@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { db } from "../firebase";
 import { useStateValue } from "../StateProvider";
 
@@ -7,23 +7,25 @@ export const TransactionList = () => {
   const getTransFromDatabase = db.collection("transactions");
   const [{ user }] = useStateValue();
 
-  if (user) {
-    getTransFromDatabase.orderBy("amount", "desc").onSnapshot((snapshot) =>
-      setUserTransactions(
-        snapshot.docs.map((doc) => ({
-          id: doc.id,
-          data: doc.data(),
-        }))
-      )
-    );
-  }
+  useEffect(() => {
+    if (user) {
+      getTransFromDatabase.orderBy("amount", "desc").onSnapshot((snapshot) =>
+        setUserTransactions(
+          snapshot.docs.map((doc) => ({
+            id: doc.id,
+            data: doc.data(),
+          }))
+        )
+      );
+    }
+  }, []);
 
   const onDeleteTrans = (id) => {
     getTransFromDatabase.doc(id).delete();
   };
 
-  //allow user to delete only his transactions
-  const userIdForDeleteTransaction = user.uid.toString();
+  //allow user to show only his transactions
+  const userIdForTransaction = user.uid.toString();
 
   return (
     <>
@@ -34,7 +36,7 @@ export const TransactionList = () => {
 
           return (
             <>
-              {userIdForDeleteTransaction === data.id ? (
+              {userIdForTransaction === data.id ? (
                 <li key={ind} className={data.exp === true ? "minus" : "plus"}>
                   {data.expense}
                   <span>
