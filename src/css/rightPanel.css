@@ -1,8 +1,12 @@
 .right-panel {
-  background: #00282b1c;
+  background: rgb(236, 236, 236);
   padding: 20px;
-  flex: 0.9;
+  width: 100%;
+  /* flex: 0.7; */
   height: auto;
+  border-radius: 20px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
 }
 .user-account-details-cards {
   display: flex;

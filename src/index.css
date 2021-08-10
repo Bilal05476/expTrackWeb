@@ -16,7 +16,9 @@
 
 body {
   margin: 0;
+  background: rgb(2, 73, 105);
   font-family: "Lato", sans-serif;
+  padding: 30px;
   /* font-family: "Poppins", sans-serif; */
 }
 .project-view {

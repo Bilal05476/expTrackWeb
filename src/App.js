@@ -45,7 +45,6 @@ function App() {
         <AuthComponent />
       ) : (
         <div className="project-view">
-          <LeftPanel userBalance={userBalance} />
           <RightPanel
             userIncome={userIncome}
             userExpense={userExpense}
@@ -56,6 +55,7 @@ function App() {
             userImage={userImage}
             userId={userId}
           />
+          <LeftPanel userBalance={userBalance} />
         </div>
       )}
     </>
