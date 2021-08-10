@@ -1,22 +1,27 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import "../css/AddTrans.css";
+import { useStateValue } from "../StateProvider";
+import { db } from "../firebase";
+import firebase from "firebase";
 
 export const AddTransaction = () => {
   const [expense, setExpense] = useState("");
   const [amount, setAmount] = useState("");
   const [exp, setExp] = useState(false);
   const [inc, setInc] = useState(false);
+  const [{ user }] = useStateValue();
 
+  const addTransInDatabase = db.collection("transactions");
   const onSubmit = (e) => {
     e.preventDefault();
-
-    const newTransaction = {
-      id: Math.floor(Math.random() * 100000000),
+    addTransInDatabase.add({
+      id: user.uid,
       exp,
       inc,
       expense,
       amount: +amount,
-    };
+      transTime: firebase.firestore.Timestamp.fromDate(new Date()),
+    });
 
     // addTransaction(newTransaction);
     setExpense("");

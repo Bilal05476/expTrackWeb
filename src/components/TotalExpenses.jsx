@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import TransactionsTable from "./TransactionsTable";
 import ExpDoughChart from "./ExpDoughChart";
 import { db } from "../firebase";
+import moment from "moment";
 import { useStateValue } from "../StateProvider";
 
 const TotalExpenses = ({
@@ -14,17 +15,6 @@ const TotalExpenses = ({
   const [{ user }] = useStateValue();
 
   const getTransFromDatabase = db.collection("transactions");
-  // if (userTransactions.length < 0) {
-  //   getTransFromDatabase.orderBy("amount", "desc").onSnapshot((snapshot) =>
-  //     setUserTransactions(
-  //       snapshot.docs.map((doc) => ({
-  //         id: doc.id,
-  //         data: doc.data(),
-  //       }))
-  //     )
-  //   );
-  // }
-  // console.log(userTransactions);
   useEffect(() => {
     if (user) {
       getTransFromDatabase.orderBy("amount", "desc").onSnapshot((snapshot) =>
@@ -72,9 +62,15 @@ const TotalExpenses = ({
                 <th style={{ border: "1px solid #ccc", padding: "2px 10px" }}>
                   Transaction Amount
                 </th>
+                <th style={{ border: "1px solid #ccc", padding: "2px 10px" }}>
+                  Time
+                </th>
               </tr>
               {userTransactions.map((transaction, ind) => {
                 const { data } = transaction;
+                const transDate = moment(
+                  data.transTime.toDate().toString()
+                ).fromNow();
                 return (
                   <>
                     {userIdForTransaction === data.id ? (
@@ -85,6 +81,7 @@ const TotalExpenses = ({
                         }
                         transactionName={data.expense}
                         transactionAmount={data.amount}
+                        transactionTime={transDate}
                       />
                     ) : (
                       ""

@@ -2,6 +2,7 @@ const TransactionsTable = ({
   colorClass,
   transactionName,
   transactionAmount,
+  transactionTime,
 }) => {
   return (
     <tr>
@@ -24,6 +25,17 @@ const TransactionsTable = ({
         }}
       >
         <small className="transaction-amount">${transactionAmount}</small>
+      </td>
+      <td>
+        {/* <small className="transaction-amount">{transactionTime}</small> */}
+        <span
+          style={{
+            fontSize: "0.7rem",
+          }}
+          className="text-secondary p-2"
+        >
+          {transactionTime}
+        </span>
       </td>
     </tr>
   );

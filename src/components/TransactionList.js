@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { db } from "../firebase";
 import { useStateValue } from "../StateProvider";
+import moment from "moment";
 
 export const TransactionList = () => {
   const [userTransactions, setUserTransactions] = useState([]);
@@ -33,6 +34,9 @@ export const TransactionList = () => {
         {userTransactions.map((trans, ind) => {
           const { data } = trans;
           const sign = data.exp === true ? "-" : "+";
+          const transDate = moment(
+            data.transTime.toDate().toString()
+          ).fromNow();
 
           return (
             <>
@@ -41,6 +45,12 @@ export const TransactionList = () => {
                   {data.expense}
                   <span>
                     {sign}${Math.abs(data.amount)}
+                  </span>
+                  <span
+                    className="m-0 text-secondary"
+                    style={{ fontSize: "0.7rem" }}
+                  >
+                    {transDate}
                   </span>
 
                   <button
