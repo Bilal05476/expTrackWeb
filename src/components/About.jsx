@@ -11,7 +11,7 @@ const About = () => {
         >
           Dashboard
         </NavLink>
-        /<strong className="mx-2">About</strong>
+        /<strong className="mx-2">About Page</strong>
       </div>
     </div>
   );
