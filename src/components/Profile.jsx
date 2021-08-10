@@ -5,6 +5,7 @@ import { auth } from "../firebase";
 
 const Profile = ({ userName, userEmail, userImage }) => {
   const [{ user }, dispatch] = useStateValue();
+  console.log(user);
 
   const history = useHistory();
 

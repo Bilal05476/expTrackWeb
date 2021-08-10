@@ -12,8 +12,19 @@ const TotalExpenses = ({
 }) => {
   const [userTransactions, setUserTransactions] = useState([]);
   const [{ user }] = useStateValue();
-  const getTransFromDatabase = db.collection("transactions");
 
+  const getTransFromDatabase = db.collection("transactions");
+  // if (userTransactions.length < 0) {
+  //   getTransFromDatabase.orderBy("amount", "desc").onSnapshot((snapshot) =>
+  //     setUserTransactions(
+  //       snapshot.docs.map((doc) => ({
+  //         id: doc.id,
+  //         data: doc.data(),
+  //       }))
+  //     )
+  //   );
+  // }
+  // console.log(userTransactions);
   useEffect(() => {
     if (user) {
       getTransFromDatabase.orderBy("amount", "desc").onSnapshot((snapshot) =>
@@ -83,7 +94,7 @@ const TotalExpenses = ({
               })}
             </table>
           )}
-          {/* {userTransactions.length < 0 && <small>No Record Found</small>} */}
+          {userTransactions.length < 0 && <small>No Record Found</small>}
         </div>
       </div>
     </div>

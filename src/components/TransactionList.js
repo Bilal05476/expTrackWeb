@@ -18,7 +18,7 @@ export const TransactionList = () => {
         )
       );
     }
-  }, []);
+  }, [user, getTransFromDatabase]);
 
   const onDeleteTrans = (id) => {
     getTransFromDatabase.doc(id).delete();
