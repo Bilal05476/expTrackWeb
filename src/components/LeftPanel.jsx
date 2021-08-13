@@ -1,5 +1,5 @@
 import "../css/leftPanel.css";
-import logo from "../img/trackerlogo.png";
+// import logo from "../img/trackerlogo.png";
 import { NavLink } from "react-router-dom";
 import { useStateValue } from "../StateProvider";
 
@@ -7,18 +7,24 @@ const LeftPanel = ({ userBalance }) => {
   const [{ userDetails }] = useStateValue();
   return (
     <div className="left-panel">
-      <div className="expense-tracker-heading">
+      {/* <div className="expense-tracker-heading">
         <img src={logo} alt="logo" />
         <h4>Expense Tracker</h4>
-      </div>
+      </div> */}
       <div className="user-account-details">
-        <img src={userDetails?.avatar} alt="profile" />
-        <h5 className="userName my-2">{userDetails?.name}</h5>
+        <div className="user-details-header">
+          🔔
+          <img src={userDetails?.avatar} alt="profile" />
+        </div>
+        <div className="user-transactions-details p-5">
+          <p style={{ color: "#333" }}>Transactions</p>
+        </div>
+        {/* <h5 className="userName my-2">{userDetails?.name}</h5>
         <div className="wallet-amount my-2">
           <i className="fa fa-credit-card mr-2"></i>
           <p className="m-0">$ {userBalance}</p>
-        </div>
-        <div className="links-for-differ-pages mt-4">
+        </div> */}
+        {/* <div className="links-for-differ-pages mt-4">
           <NavLink
             exact
             activeClassName="is-active"
@@ -44,7 +50,7 @@ const LeftPanel = ({ userBalance }) => {
           <NavLink activeClassName="is-active" className="pageLink" to="/about">
             <p>About</p>
           </NavLink>
-        </div>
+        </div> */}
       </div>
     </div>
   );
